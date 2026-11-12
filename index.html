@@ -8,32 +8,39 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/brands.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/fontawesome.min.js"></script>
 <style>
 /* Layout: one narrow reading column; a wide coordinate "chart" hero linking Panadura and Hamilton; two project plates side by side. */
-/* Palette "Refreshing Summer Fun": sky #8ECAE6 · lagoon #219EBC · deep sea #023047 · sun #FFB703 · tangerine #FB8500.
-   Raw swatches are used for fills; darker text-safe shades of the same hues are used for small text on light backgrounds. */
+/* Palette: yellow, white and black. Light theme only, on purpose.
+   Yellow is never used for text on white (too low contrast); it appears as fills,
+   highlighter bands and the hero background, with black text on top. */
 :root {
-  --bg: #f3f9fc;           /* sky, very light */
+  color-scheme: light;
+  --bg: #ffffff;
   --surface: #ffffff;
-  --ink: #023047;          /* deep sea */
-  --muted: #4a6576;
-  --line: #d2e6ef;
-  --ocean: #15778f;        /* lagoon, text-safe */
-  --lk: #a85800;           /* tangerine, text-safe: Uncover Sri Lanka */
-  --nz: #15778f;           /* lagoon, text-safe: Uncover New Zealand */
-  --lk-fill: #fb8500;
-  --nz-fill: #219ebc;
-  --lk-tint: #fff3d6;      /* sun, very light */
-  --nz-tint: #e3f2f9;      /* sky, very light */
-  --grid: #c3dde9;
-  /* Hero band: deep sea with sun highlights, same in both themes */
-  --hero-bg: #023047;
-  --hero-ink: #f1f8fb;
-  --hero-muted: #8ecae6;
-  --hero-grid: rgba(142, 202, 230, 0.22);
-  --sun: #ffb703;
-  --lk-dot: #fb8500;
-  --nz-dot: #8ecae6;
+  --ink: #111111;
+  --muted: #57534a;        /* warm grey, leans toward the yellow */
+  --line: #e7e3d8;
+  --yellow: #ffcc00;
+  --yellow-soft: #fff7d1;
+  --ocean: #111111;        /* accent for text and focus rings: black */
+  --lk: #111111;
+  --nz: #111111;
+  --lk-fill: #ffcc00;
+  --nz-fill: #ffcc00;
+  --lk-tint: #fff7d1;
+  --nz-tint: #fff7d1;
+  --grid: #e7e3d8;
+  --rail: #c4bfb1;
+  /* Hero band: black with white type and yellow accents */
+  --hero-bg: #111111;
+  --hero-ink: #ffffff;
+  --hero-muted: #bdb8ab;
+  --hero-grid: rgba(255, 255, 255, 0.12);
+  --sun: #ffcc00;
+  --lk-dot: #ffcc00;
+  --nz-dot: #111111;
   --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --f-body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
   --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
@@ -43,23 +50,11 @@
   --step-2: 1.75rem;
   --step-3: clamp(2.4rem, 7vw, 4.75rem);
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #011d2b; --surface: #032a3e; --ink: #e8f4f9; --muted: #8fb2c4; --line: #0e3d55;
-    --ocean: #8ecae6; --lk: #fb8500; --nz: #8ecae6; --lk-fill: #fb8500; --nz-fill: #219ebc;
-    --lk-tint: #2e2510; --nz-tint: #06364d; --grid: #0e3d55; --hero-bg: #032a3e; color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #011d2b; --surface: #032a3e; --ink: #e8f4f9; --muted: #8fb2c4; --line: #0e3d55;
-  --ocean: #8ecae6; --lk: #fb8500; --nz: #8ecae6; --lk-fill: #fb8500; --nz-fill: #219ebc;
-  --lk-tint: #2e2510; --nz-tint: #06364d; --grid: #0e3d55; --hero-bg: #032a3e; color-scheme: dark;
-}
-
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
+  margin: 0;
   background: var(--bg); color: var(--ink);
   font-family: var(--f-body); font-size: var(--step-0); line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -84,7 +79,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ocean); outline
 }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
 .mark { font-family: var(--f-display); font-weight: 800; font-size: 1.05rem; text-decoration: none; letter-spacing: -0.01em; }
-.mark span { color: var(--ocean); }
+.mark span { color: #e0b000; }
 .top nav { display: flex; gap: 20px; font-size: var(--step--1); }
 .top nav a { text-decoration: none; color: var(--muted); }
 .top nav a:hover { color: var(--ink); }
@@ -126,9 +121,9 @@ h1 em { font-style: normal; color: var(--ocean); }
   .chart .route { stroke-width: 2.5; }
 }
 .chart .dot-lk { fill: var(--lk-dot); }
-.chart .dot-nz { fill: var(--nz-dot); }
-.chart .halo-lk { fill: var(--lk-dot); opacity: .25; }
-.chart .halo-nz { fill: var(--nz-dot); opacity: .25; }
+.chart .dot-nz { fill: var(--nz-dot); stroke: var(--hero-ink); stroke-width: 2; }
+.chart .halo-lk { fill: var(--lk-dot); opacity: .22; }
+.chart .halo-nz { fill: var(--hero-ink); opacity: .14; }
 @media (prefers-reduced-motion: no-preference) {
   .chart .route { animation: flow 2.4s linear infinite; }
   @keyframes flow { to { stroke-dashoffset: -24; } }
@@ -157,16 +152,16 @@ h2 { font-family: var(--f-display); font-weight: 800; font-size: var(--step-2); 
   font-family: var(--f-mono); font-size: 11px; color: var(--muted); letter-spacing: 0.03em;
 }
 .status { display: inline-flex; align-items: center; gap: 7px; color: var(--c); font-weight: 500; }
-.status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--cf); }
+.status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--yellow); box-shadow: 0 0 0 1.5px var(--ink); }
 .plate-body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .plate h3 { font-family: var(--f-display); font-weight: 800; font-size: 1.45rem; letter-spacing: -0.02em; line-height: 1.1; margin: 0; }
-.plate h3 span { color: var(--c); }
+.plate h3 span { color: var(--ink); background: linear-gradient(transparent 58%, var(--yellow) 58%, var(--yellow) 90%, transparent 90%); padding: 0 0.06em; }
 .plate p { margin: 0; color: var(--muted); max-width: 60ch; }
 .visit {
   margin-top: auto; align-self: flex-start; transform: translateY(8px);
   display: inline-flex; align-items: center; gap: 8px;
   font-weight: 600; font-size: 0.9375rem; text-decoration: none;
-  color: var(--c); border-bottom: 2px solid var(--cf); padding-bottom: 2px;
+  color: var(--c); border-bottom: 3px solid var(--cf); padding-bottom: 2px;
 }
 .visit:hover { gap: 12px; }
 .visit[aria-disabled="true"] { color: var(--muted); border-color: var(--line); cursor: default; }
@@ -177,14 +172,17 @@ h2 { font-family: var(--f-display); font-weight: 800; font-size: var(--step-2); 
 .about-text p { margin: 0 0 16px; max-width: 62ch; }
 .about-text p:last-child { margin-bottom: 0; }
 .timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
-/* Each item draws its own dot and the line down to the next dot; both share a 6px centre line. */
-.timeline li { padding: 0 0 22px 28px; position: relative; }
+/* Rail geometry, all whole pixels so nothing lands between pixels:
+   dot 12px wide at left 0 → centre 6px; line 2px wide at left 5px → centre 6px.
+   Label line is 18px tall and the dot sits at top 3px → both centred at 9px.
+   Each line runs from its dot's centre to the next dot's centre, behind the dots. */
+.timeline li { padding: 0 0 24px 30px; position: relative; }
 .timeline li:last-child { padding-bottom: 0; }
-.timeline li::before { content: ""; position: absolute; left: 0; top: 3px; width: 12px; height: 12px; box-sizing: border-box; border-radius: 50%; background: var(--bg); border: 2px solid var(--nz-fill); z-index: 1; }
-.timeline li::after { content: ""; position: absolute; left: 5px; width: 2px; top: 15px; bottom: -3px; background: var(--line); }
+.timeline li::before { content: ""; position: absolute; left: 0; top: 3px; width: 12px; height: 12px; box-sizing: border-box; border-radius: 50%; background: var(--bg); border: 2px solid var(--ink); z-index: 1; }
+.timeline li::after { content: ""; position: absolute; left: 5px; width: 2px; top: 9px; bottom: -9px; background: var(--rail); }
 .timeline li:last-child::after { display: none; }
-.timeline li:first-child::before { background: var(--sun); border-color: var(--lk-fill); }
-.timeline .when { font-family: var(--f-mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; }
+.timeline li:first-child::before { background: var(--yellow); }
+.timeline .when { font-family: var(--f-mono); font-size: 11px; line-height: 18px; color: var(--muted); letter-spacing: 0.04em; }
 .timeline .what { font-weight: 600; }
 .timeline .where { color: var(--muted); font-size: 0.9375rem; }
 
@@ -192,12 +190,14 @@ h2 { font-family: var(--f-display); font-weight: 800; font-size: var(--step-2); 
 .contact h2 { font-size: clamp(1.9rem, 5vw, 3rem); max-width: 18ch; }
 .links { display: grid; gap: 0; margin-top: 32px; border-top: 1px solid var(--line); }
 .links a {
-  display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
   padding-block: 18px; border-bottom: 1px solid var(--line); text-decoration: none;
 }
-.links .net { font-family: var(--f-display); font-weight: 600; font-size: var(--step-1); }
+.links .net { font-family: var(--f-display); font-weight: 600; font-size: var(--step-1); display: inline-flex; align-items: center; gap: 14px; }
+.links .ico { display: inline-flex; width: 1.15em; height: 1.15em; flex: none; align-items: center; justify-content: center; }
+.links .ico svg { width: 100%; height: 100%; }
 .links .handle { font-family: var(--f-mono); font-size: var(--step--1); color: var(--muted); }
-.links a:hover .net { color: var(--ocean); }
+.links a:hover .net { box-shadow: inset 0 -0.35em 0 var(--yellow); }
 .links a:hover .handle::after { content: " →"; }
 
 footer { padding-block: 28px 40px; font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
@@ -316,6 +316,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
         </div>
         <ol class="timeline" aria-label="Career and study">
           <li><div class="when">NOW</div><div class="what">IT Support</div><div class="where">Mustard Technology, New Zealand</div></li>
+          <li><div class="when">AUTOMOTIVE</div><div class="what">Service Advisor</div><div class="where">Ebbett Audi &amp; CUPRA</div></li>
           <li><div class="when">MASTER'S</div><div class="what">Master of Applied IT</div><div class="where">WINTEC, New Zealand</div></li>
           <li><div class="when">3+ YEARS</div><div class="what">UX Designer</div><div class="where">Dialog Axiata PLC, Sri Lanka</div></li>
           <li><div class="when">BACHELOR'S</div><div class="what">Bachelor's Degree in IT</div><div class="where">SLIIT, Sri Lanka</div></li>
@@ -329,9 +330,9 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
       <div class="eyebrow">Contact</div>
       <h2>Say kia ora, or āyubōwan.</h2>
       <div class="links">
-        <a href="https://www.linkedin.com/in/shihansabir/" target="_blank" rel="noopener"><span class="net">LinkedIn</span><span class="handle">in/shihansabir</span></a>
-        <a href="https://www.instagram.com/shihan.co.nz/" target="_blank" rel="noopener"><span class="net">Instagram</span><span class="handle">@shihan.co.nz</span></a>
-        <a href="https://www.facebook.com/shihan.co.nz" target="_blank" rel="noopener"><span class="net">Facebook</span><span class="handle">shihan.co.nz</span></a>
+        <a href="https://www.linkedin.com/in/shihansabir/" target="_blank" rel="noopener"><span class="net"><span class="ico"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></span>LinkedIn</span><span class="handle">in/shihansabir</span></a>
+        <a href="https://www.instagram.com/shihan.co.nz/" target="_blank" rel="noopener"><span class="net"><span class="ico"><i class="fa-brands fa-instagram" aria-hidden="true"></i></span>Instagram</span><span class="handle">@shihan.co.nz</span></a>
+        <a href="https://www.facebook.com/shihan.co.nz" target="_blank" rel="noopener"><span class="net"><span class="ico"><i class="fa-brands fa-facebook" aria-hidden="true"></i></span>Facebook</span><span class="handle">shihan.co.nz</span></a>
       </div>
     </div>
   </section>
