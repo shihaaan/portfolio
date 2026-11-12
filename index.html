@@ -48,7 +48,7 @@
   --step-0: 1rem;
   --step-1: 1.25rem;
   --step-2: 1.75rem;
-  --step-3: clamp(2.4rem, 7vw, 4.75rem);
+  --step-3: clamp(2.4rem, 7vw, 4.25rem);
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -92,7 +92,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ocean); outline
 .hero .lede strong { color: var(--hero-ink); }
 .hero h1 em { color: var(--sun); }
 .hero-grid { display: grid; gap: 40px; align-items: end; }
-@media (min-width: 900px) { .hero-grid { grid-template-columns: 1.05fr 1fr; } }
+/* Desktop: the map column gets the larger share so the chart reads at about full size. */
+@media (min-width: 900px) { .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 48px; align-items: center; }
+  .chart { margin: 0; } }
 .eyebrow { font-family: var(--f-mono); font-size: var(--step--1); color: var(--muted); letter-spacing: 0.04em; }
 h1 {
   font-family: var(--f-display); font-weight: 800; font-size: var(--step-3);
@@ -108,11 +110,11 @@ h1 em { font-style: normal; color: var(--ocean); }
    phones shrink it to about 70%, so their labels are set larger to come out readable. */
 .chart .g { stroke: var(--hero-grid); stroke-width: 1; fill: none; }
 .chart .eq { stroke: var(--hero-muted); stroke-width: 1; stroke-dasharray: 3 5; fill: none; opacity: .6; }
-.chart .ax { font-family: var(--f-mono); font-size: 11px; fill: var(--hero-muted); }
+.chart .ax { font-family: var(--f-mono); font-size: 12px; fill: var(--hero-muted); }
 .chart .route { stroke: var(--sun); stroke-width: 2; fill: none; stroke-dasharray: 6 6; stroke-linecap: round; }
-.chart .lbl { font-family: var(--f-mono); font-size: 13px; font-weight: 500; fill: var(--hero-ink); }
-.chart .lbl-s { font-family: var(--f-mono); font-size: 11px; fill: var(--hero-muted); }
-.chart .mid { font-family: var(--f-mono); font-size: 12px; font-weight: 500; fill: var(--sun); }
+.chart .lbl { font-family: var(--f-mono); font-size: 14px; font-weight: 500; fill: var(--hero-ink); }
+.chart .lbl-s { font-family: var(--f-mono); font-size: 12px; fill: var(--hero-muted); }
+.chart .mid { font-family: var(--f-mono); font-size: 13px; font-weight: 500; fill: var(--sun); }
 @media (max-width: 599px) {
   .chart .ax { font-size: 13px; }
   .chart .lbl { font-size: 16px; }
@@ -128,7 +130,7 @@ h1 em { font-style: normal; color: var(--ocean); }
   .chart .route { animation: flow 2.4s linear infinite; }
   @keyframes flow { to { stroke-dashoffset: -24; } }
 }
-.chart figcaption { font-family: var(--f-mono); font-size: 11px; color: var(--hero-muted); margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.chart figcaption { font-family: var(--f-mono); font-size: 12px; color: var(--hero-muted); margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
 
 /* Sections */
 section { padding-block: clamp(48px, 8vw, 88px); border-top: 1px solid var(--line); }
