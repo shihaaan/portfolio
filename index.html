@@ -109,17 +109,26 @@ h1 em { font-style: normal; color: var(--ocean); }
 
 .chart { min-width: 0; }
 .chart svg { display: block; width: 100%; height: auto; max-width: 100%; }
+/* Sizes are in the drawing's own units. Desktop shows the map near full size;
+   phones shrink it to about 70%, so their labels are set larger to come out readable. */
 .chart .g { stroke: var(--hero-grid); stroke-width: 1; fill: none; }
-.chart .eq { stroke: var(--hero-muted); stroke-width: 1; stroke-dasharray: 2 4; fill: none; opacity: .6; }
-.chart .ax { font-family: var(--f-mono); font-size: 10px; fill: var(--hero-muted); }
-.chart .route { stroke: var(--sun); stroke-width: 2; fill: none; stroke-dasharray: 6 6; }
-.chart .lbl { font-family: var(--f-mono); font-size: 11px; fill: var(--hero-ink); }
-.chart .lbl-s { font-family: var(--f-mono); font-size: 10px; fill: var(--hero-muted); }
+.chart .eq { stroke: var(--hero-muted); stroke-width: 1; stroke-dasharray: 3 5; fill: none; opacity: .6; }
+.chart .ax { font-family: var(--f-mono); font-size: 11px; fill: var(--hero-muted); }
+.chart .route { stroke: var(--sun); stroke-width: 2; fill: none; stroke-dasharray: 6 6; stroke-linecap: round; }
+.chart .lbl { font-family: var(--f-mono); font-size: 13px; font-weight: 500; fill: var(--hero-ink); }
+.chart .lbl-s { font-family: var(--f-mono); font-size: 11px; fill: var(--hero-muted); }
+.chart .mid { font-family: var(--f-mono); font-size: 12px; font-weight: 500; fill: var(--sun); }
+@media (max-width: 599px) {
+  .chart .ax { font-size: 13px; }
+  .chart .lbl { font-size: 16px; }
+  .chart .lbl-s { font-size: 13px; }
+  .chart .mid { font-size: 14px; }
+  .chart .route { stroke-width: 2.5; }
+}
 .chart .dot-lk { fill: var(--lk-dot); }
 .chart .dot-nz { fill: var(--nz-dot); }
 .chart .halo-lk { fill: var(--lk-dot); opacity: .25; }
 .chart .halo-nz { fill: var(--nz-dot); opacity: .25; }
-.chart .mid { font-family: var(--f-mono); font-size: 11px; fill: var(--sun); }
 @media (prefers-reduced-motion: no-preference) {
   .chart .route { animation: flow 2.4s linear infinite; }
   @keyframes flow { to { stroke-dashoffset: -24; } }
@@ -167,10 +176,13 @@ h2 { font-family: var(--f-display); font-weight: 800; font-size: var(--step-2); 
 @media (min-width: 860px) { .about { grid-template-columns: 1.2fr 1fr; } }
 .about-text p { margin: 0 0 16px; max-width: 62ch; }
 .about-text p:last-child { margin-bottom: 0; }
-.timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-left: 1px solid var(--line); }
-.timeline li { padding: 0 0 22px 20px; position: relative; }
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+/* Each item draws its own dot and the line down to the next dot; both share a 6px centre line. */
+.timeline li { padding: 0 0 22px 28px; position: relative; }
 .timeline li:last-child { padding-bottom: 0; }
-.timeline li::before { content: ""; position: absolute; left: -5px; top: 7px; width: 9px; height: 9px; border-radius: 50%; background: var(--bg); border: 2px solid var(--nz-fill); }
+.timeline li::before { content: ""; position: absolute; left: 0; top: 3px; width: 12px; height: 12px; box-sizing: border-box; border-radius: 50%; background: var(--bg); border: 2px solid var(--nz-fill); z-index: 1; }
+.timeline li::after { content: ""; position: absolute; left: 5px; width: 2px; top: 15px; bottom: -3px; background: var(--line); }
+.timeline li:last-child::after { display: none; }
 .timeline li:first-child::before { background: var(--sun); border-color: var(--lk-fill); }
 .timeline .when { font-family: var(--f-mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; }
 .timeline .what { font-weight: 600; }
@@ -215,34 +227,34 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
       </div>
 
       <figure class="chart" aria-label="Map grid showing the route between Panadura, Sri Lanka and Hamilton, New Zealand">
-        <svg viewBox="0 0 540 300" role="img">
+        <svg viewBox="0 0 510 315" role="img">
           <title>Panadura to Hamilton, about 10,940 km</title>
-          <!-- Equirectangular window: 60°E–190°E, 20°N–50°S. x=(lon-60)*4, y=(20-lat)*4 -->
+          <!-- Equirectangular window: 60°E–182.5°E, 20°N–50°S. x=(lon-60)*4, y=(20-lat)*4 -->
           <g transform="translate(10,10)">
-            <path class="g" d="M0 0V280M80 0V280M160 0V280M240 0V280M320 0V280M400 0V280M480 0V280M520 0V280"/>
-            <path class="g" d="M0 0H520M0 120H520M0 200H520M0 280H520"/>
-            <path class="eq" d="M0 80H520"/>
-            <text class="ax" x="4" y="76">0° EQUATOR</text>
-            <text class="ax" x="4" y="116">10°S</text>
-            <text class="ax" x="4" y="196">30°S</text>
-            <text class="ax" x="4" y="276">50°S</text>
-            <text class="ax" x="84" y="12">80°E</text>
-            <text class="ax" x="244" y="12">120°E</text>
-            <text class="ax" x="404" y="12">160°E</text>
+            <path class="g" d="M0 0V280M80 0V280M160 0V280M240 0V280M320 0V280M400 0V280M480 0V280M490 0V280"/>
+            <path class="g" d="M0 0H490M0 120H490M0 200H490M0 280H490"/>
+            <path class="eq" d="M0 80H490"/>
+            <text class="ax" x="4" y="100">0° EQUATOR</text>
+            <text class="ax" x="4" y="136">10°S</text>
+            <text class="ax" x="4" y="216">30°S</text>
+            <text class="ax" x="4" y="298">50°S</text>
+            <text class="ax" x="80" y="298" text-anchor="middle">80°E</text>
+            <text class="ax" x="240" y="298" text-anchor="middle">120°E</text>
+            <text class="ax" x="400" y="298" text-anchor="middle">160°E</text>
 
             <!-- Panadura 6.71N 79.90E → (79.6, 53.2); Hamilton 37.79S 175.28E → (461.1, 231.2) -->
             <path class="route" d="M79.6 53.2 Q 300 40 461.1 231.2"/>
-            <text class="mid" x="250" y="76" text-anchor="middle">≈ 10,940 km</text>
+            <text class="mid" x="262" y="54" text-anchor="middle">≈ 10,940 km</text>
 
-            <circle class="halo-lk" cx="79.6" cy="53.2" r="12"/>
-            <circle class="dot-lk" cx="79.6" cy="53.2" r="5"/>
-            <text class="lbl" x="94" y="38">Panadura</text>
-            <text class="lbl-s" x="94" y="26">6.71°N 79.90°E</text>
+            <circle class="halo-lk" cx="79.6" cy="53.2" r="13"/>
+            <circle class="dot-lk" cx="79.6" cy="53.2" r="6"/>
+            <text class="lbl" x="100" y="22">Panadura</text>
+            <text class="lbl-s" x="100" y="39">6.71°N 79.90°E</text>
 
-            <circle class="halo-nz" cx="461.1" cy="231.2" r="12"/>
-            <circle class="dot-nz" cx="461.1" cy="231.2" r="5"/>
-            <text class="lbl" x="446" y="259" text-anchor="end">Hamilton</text>
-            <text class="lbl-s" x="446" y="273" text-anchor="end">37.79°S 175.28°E</text>
+            <circle class="halo-nz" cx="461.1" cy="231.2" r="13"/>
+            <circle class="dot-nz" cx="461.1" cy="231.2" r="6"/>
+            <text class="lbl" x="440" y="254" text-anchor="end">Hamilton</text>
+            <text class="lbl-s" x="440" y="271" text-anchor="end">37.79°S 175.28°E</text>
           </g>
         </svg>
         <figcaption>
