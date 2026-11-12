@@ -171,6 +171,14 @@ h2 { font-family: var(--f-display); font-weight: 800; font-size: var(--step-2); 
 @media (min-width: 860px) { .about { grid-template-columns: 1.2fr 1fr; } }
 .about-text p { margin: 0 0 16px; max-width: 62ch; }
 .about-text p:last-child { margin-bottom: 0; }
+.text-link {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-weight: 600; font-size: 0.9375rem; text-decoration: none; color: var(--ink);
+  border-bottom: 3px solid var(--yellow); padding-bottom: 2px;
+}
+.text-link .ico { display: inline-flex; width: 1.1em; height: 1.1em; }
+.text-link .ico svg { width: 100%; height: 100%; }
+.text-link:hover { gap: 14px; }
 .timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
 /* Rail geometry, all whole pixels so nothing lands between pixels:
    dot 12px wide at left 0 → centre 6px; line 2px wide at left 5px → centre 6px.
@@ -187,7 +195,8 @@ h2 { font-family: var(--f-display); font-weight: 800; font-size: var(--step-2); 
 .timeline .where { color: var(--muted); font-size: 0.9375rem; }
 
 /* Contact */
-.contact h2 { font-size: clamp(1.9rem, 5vw, 3rem); max-width: 18ch; }
+/* One line at every width: the size scales with the screen so the line always fits. */
+.contact h2 { font-size: clamp(1.25rem, 7vw, 3rem); white-space: nowrap; }
 .links { display: grid; gap: 0; margin-top: 32px; border-top: 1px solid var(--line); }
 .links a {
   display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
@@ -306,13 +315,15 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     <div class="wrap">
       <div class="sec-head">
         <div class="eyebrow">About</div>
-        <h2>UX background, IT day job</h2>
+        <h2>UX, IT and cars</h2>
       </div>
       <div class="about">
         <div class="about-text">
           <p>I spent three-plus years as a UX designer in Sri Lanka before moving to New Zealand to study. My master's research looked at prompt suggestions in generative AI interfaces like ChatGPT, and how they help people get started.</p>
           <p>Today I work in IT support, looking after users, devices, applications and infrastructure. I still bring UX into that work, designing internal tools and dashboards for the teams I support.</p>
           <p>Outside work, I love using Claude to turn ideas into real things. The Uncover Project is where that comes together: my design practice, plus an AI-assisted UX process I'm building and testing end to end.</p>
+          <p>Cars are my other passion. I run SS96 MEDIA, an automotive photography page for people who believe cars have soul, and I take part in track days with my car club.</p>
+          <p><a class="text-link" href="https://www.instagram.com/ss96media/" target="_blank" rel="noopener"><span class="ico"><i class="fa-brands fa-instagram" aria-hidden="true"></i></span>See SS96 MEDIA on Instagram <span aria-hidden="true">→</span></a></p>
         </div>
         <ol class="timeline" aria-label="Career and study">
           <li><div class="when">NOW</div><div class="what">IT Support</div><div class="where">Mustard Technology, New Zealand</div></li>
