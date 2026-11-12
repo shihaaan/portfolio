@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shihan Sabir Portfolio</title>
+<meta name="description" content="Shihan Sabir — UX designer working in IT, based in Aotearoa New Zealand. Home of The Uncover Project.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one narrow reading column; a wide coordinate "chart" hero linking Colombo and Auckland; two project plates side by side. */
+/* Palette "Refreshing Summer Fun": sky #8ECAE6 · lagoon #219EBC · deep sea #023047 · sun #FFB703 · tangerine #FB8500.
+   Raw swatches are used for fills; darker text-safe shades of the same hues are used for small text on light backgrounds. */
+:root {
+  --bg: #f3f9fc;           /* sky, very light */
+  --surface: #ffffff;
+  --ink: #023047;          /* deep sea */
+  --muted: #4a6576;
+  --line: #d2e6ef;
+  --ocean: #15778f;        /* lagoon, text-safe */
+  --lk: #a85800;           /* tangerine, text-safe: Uncover Sri Lanka */
+  --nz: #15778f;           /* lagoon, text-safe: Uncover New Zealand */
+  --lk-fill: #fb8500;
+  --nz-fill: #219ebc;
+  --lk-tint: #fff3d6;      /* sun, very light */
+  --nz-tint: #e3f2f9;      /* sky, very light */
+  --grid: #c3dde9;
+  /* Hero band: deep sea with sun highlights, same in both themes */
+  --hero-bg: #023047;
+  --hero-ink: #f1f8fb;
+  --hero-muted: #8ecae6;
+  --hero-grid: rgba(142, 202, 230, 0.22);
+  --sun: #ffb703;
+  --lk-dot: #fb8500;
+  --nz-dot: #8ecae6;
+  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.75rem;
+  --step-3: clamp(2.4rem, 7vw, 4.75rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #011d2b; --surface: #032a3e; --ink: #e8f4f9; --muted: #8fb2c4; --line: #0e3d55;
+    --ocean: #8ecae6; --lk: #fb8500; --nz: #8ecae6; --lk-fill: #fb8500; --nz-fill: #219ebc;
+    --lk-tint: #2e2510; --nz-tint: #06364d; --grid: #0e3d55; --hero-bg: #032a3e; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #011d2b; --surface: #032a3e; --ink: #e8f4f9; --muted: #8fb2c4; --line: #0e3d55;
+  --ocean: #8ecae6; --lk: #fb8500; --nz: #8ecae6; --lk-fill: #fb8500; --nz-fill: #219ebc;
+  --lk-tint: #2e2510; --nz-tint: #06364d; --grid: #0e3d55; --hero-bg: #032a3e; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--f-body); font-size: var(--step-0); line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--ocean); outline-offset: 3px; border-radius: 4px; }
+
+.wrap {
+  max-width: 1080px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 720px) { .wrap { padding-left: max(32px, env(safe-area-inset-left, 0px)); padding-right: max(32px, env(safe-area-inset-right, 0px)); } }
+
+/* Header */
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.mark { font-family: var(--f-display); font-weight: 800; font-size: 1.05rem; text-decoration: none; letter-spacing: -0.01em; }
+.mark span { color: var(--ocean); }
+.top nav { display: flex; gap: 20px; font-size: var(--step--1); }
+.top nav a { text-decoration: none; color: var(--muted); }
+.top nav a:hover { color: var(--ink); }
+
+/* Hero */
+.hero-band { background: var(--hero-bg); color: var(--hero-ink); }
+.hero { padding-block: clamp(40px, 8vw, 88px) clamp(36px, 6vw, 64px); }
+.hero .eyebrow { color: var(--hero-muted); }
+.hero .lede { color: var(--hero-muted); }
+.hero .lede strong { color: var(--hero-ink); }
+.hero h1 em { color: var(--sun); }
+.hero-grid { display: grid; gap: 40px; align-items: end; }
+@media (min-width: 900px) { .hero-grid { grid-template-columns: 1.05fr 1fr; } }
+.eyebrow { font-family: var(--f-mono); font-size: var(--step--1); color: var(--muted); letter-spacing: 0.04em; }
+h1 {
+  font-family: var(--f-display); font-weight: 800; font-size: var(--step-3);
+  line-height: 0.98; letter-spacing: -0.035em; margin: 14px 0 22px; text-wrap: balance;
+}
+h1 em { font-style: normal; color: var(--ocean); }
+.lede { font-size: var(--step-1); line-height: 1.5; color: var(--muted); max-width: 34ch; margin: 0; text-wrap: pretty; }
+.lede strong { color: var(--ink); font-weight: 500; }
+
+.chart { min-width: 0; }
+.chart svg { display: block; width: 100%; height: auto; max-width: 100%; }
+.chart .g { stroke: var(--hero-grid); stroke-width: 1; fill: none; }
+.chart .eq { stroke: var(--hero-muted); stroke-width: 1; stroke-dasharray: 2 4; fill: none; opacity: .6; }
+.chart .ax { font-family: var(--f-mono); font-size: 10px; fill: var(--hero-muted); }
+.chart .route { stroke: var(--sun); stroke-width: 2; fill: none; stroke-dasharray: 6 6; }
+.chart .lbl { font-family: var(--f-mono); font-size: 11px; fill: var(--hero-ink); }
+.chart .lbl-s { font-family: var(--f-mono); font-size: 10px; fill: var(--hero-muted); }
+.chart .dot-lk { fill: var(--lk-dot); }
+.chart .dot-nz { fill: var(--nz-dot); }
+.chart .halo-lk { fill: var(--lk-dot); opacity: .25; }
+.chart .halo-nz { fill: var(--nz-dot); opacity: .25; }
+.chart .mid { font-family: var(--f-mono); font-size: 11px; fill: var(--sun); }
+@media (prefers-reduced-motion: no-preference) {
+  .chart .route { animation: flow 2.4s linear infinite; }
+  @keyframes flow { to { stroke-dashoffset: -24; } }
+}
+.chart figcaption { font-family: var(--f-mono); font-size: 11px; color: var(--hero-muted); margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+
+/* Sections */
+section { padding-block: clamp(48px, 8vw, 88px); border-top: 1px solid var(--line); }
+.sec-head { display: grid; gap: 14px; margin-bottom: 36px; max-width: 64ch; }
+h2 { font-family: var(--f-display); font-weight: 800; font-size: var(--step-2); letter-spacing: -0.02em; line-height: 1.1; margin: 0; text-wrap: balance; }
+.sec-head p { margin: 0; color: var(--muted); }
+
+/* Project plates */
+.projects { display: grid; gap: 20px; }
+@media (min-width: 820px) { .projects { grid-template-columns: 1fr 1fr; } }
+.plate {
+  --c: var(--ocean);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  display: flex; flex-direction: column; min-width: 0; overflow: hidden;
+}
+.plate.lk { --c: var(--lk); --cf: var(--lk-fill); --ct: var(--lk-tint); }
+.plate.nz { --c: var(--nz); --cf: var(--nz-fill); --ct: var(--nz-tint); }
+.plate-top {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 14px 22px; border-bottom: 1px solid var(--line); background: var(--ct);
+  font-family: var(--f-mono); font-size: 11px; color: var(--muted); letter-spacing: 0.03em;
+}
+.status { display: inline-flex; align-items: center; gap: 7px; color: var(--c); font-weight: 500; }
+.status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--cf); }
+.plate-body { padding: 24px 22px 26px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+.plate h3 { font-family: var(--f-display); font-weight: 800; font-size: 1.6rem; letter-spacing: -0.02em; line-height: 1.1; margin: 0; }
+.plate h3 span { color: var(--c); }
+.plate p { margin: 0; color: var(--muted); max-width: 60ch; }
+dl.facts { margin: 0; display: grid; gap: 10px; font-size: 0.9375rem; }
+dl.facts div { display: grid; grid-template-columns: 7.5rem 1fr; gap: 12px; }
+dl.facts dt { font-family: var(--f-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); padding-top: 3px; }
+dl.facts dd { margin: 0; min-width: 0; }
+@media (max-width: 420px) { dl.facts div { grid-template-columns: 1fr; gap: 2px; } }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0; }
+.tags li { font-size: 12px; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.visit {
+  margin-top: auto; align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-weight: 600; font-size: 0.9375rem; text-decoration: none;
+  color: var(--c); border-bottom: 2px solid var(--cf); padding-bottom: 2px;
+}
+.visit:hover { gap: 12px; }
+.visit[aria-disabled="true"] { color: var(--muted); border-color: var(--line); cursor: default; }
+
+/* Approach */
+.approach { display: grid; gap: 28px 40px; }
+@media (min-width: 720px) { .approach { grid-template-columns: repeat(2, 1fr); } }
+.approach h3 { font-family: var(--f-display); font-weight: 600; font-size: var(--step-1); margin: 0 0 6px; letter-spacing: -0.01em; }
+.approach p { margin: 0; color: var(--muted); max-width: 52ch; }
+
+/* About */
+.about { display: grid; gap: 40px; }
+@media (min-width: 860px) { .about { grid-template-columns: 1.2fr 1fr; } }
+.about-text p { margin: 0 0 16px; max-width: 62ch; }
+.about-text p:last-child { margin-bottom: 0; }
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-left: 1px solid var(--line); }
+.timeline li { padding: 0 0 22px 20px; position: relative; }
+.timeline li:last-child { padding-bottom: 0; }
+.timeline li::before { content: ""; position: absolute; left: -5px; top: 7px; width: 9px; height: 9px; border-radius: 50%; background: var(--bg); border: 2px solid var(--nz-fill); }
+.timeline li:first-child::before { background: var(--sun); border-color: var(--lk-fill); }
+.timeline .when { font-family: var(--f-mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; }
+.timeline .what { font-weight: 600; }
+.timeline .where { color: var(--muted); font-size: 0.9375rem; }
+
+/* Contact */
+.contact h2 { font-size: clamp(1.9rem, 5vw, 3rem); max-width: 18ch; }
+.links { display: grid; gap: 0; margin-top: 32px; border-top: 1px solid var(--line); }
+.links a {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap;
+  padding-block: 18px; border-bottom: 1px solid var(--line); text-decoration: none;
+}
+.links .net { font-family: var(--f-display); font-weight: 600; font-size: var(--step-1); }
+.links .handle { font-family: var(--f-mono); font-size: var(--step--1); color: var(--muted); }
+.links a:hover .net { color: var(--ocean); }
+.links a:hover .handle::after { content: " →"; }
+
+footer { padding-block: 28px 40px; font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
+footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top">Shihan Sabir<span>.</span></a>
+    <nav aria-label="Sections">
+      <a href="#uncover">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero-band">
+  <div class="wrap hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">UX designer · IT support · Aotearoa New Zealand</div>
+        <h1>I design clear, useful things for <em>two islands</em> I call home.</h1>
+        <p class="lede">I grew up in <strong>Sri Lanka</strong> and now live in <strong>New Zealand</strong>. The Uncover Project is how I help people understand both.</p>
+      </div>
+
+      <figure class="chart" aria-label="Map grid showing the route between Colombo, Sri Lanka and Hamilton, New Zealand">
+        <svg viewBox="0 0 540 300" role="img">
+          <title>Colombo to Hamilton, about 10,950 km</title>
+          <!-- Equirectangular window: 60°E–190°E, 20°N–50°S. x=(lon-60)*4, y=(20-lat)*4 -->
+          <g transform="translate(10,10)">
+            <path class="g" d="M0 0V280M80 0V280M160 0V280M240 0V280M320 0V280M400 0V280M480 0V280M520 0V280"/>
+            <path class="g" d="M0 0H520M0 120H520M0 200H520M0 280H520"/>
+            <path class="eq" d="M0 80H520"/>
+            <text class="ax" x="4" y="76">0° EQUATOR</text>
+            <text class="ax" x="4" y="116">10°S</text>
+            <text class="ax" x="4" y="196">30°S</text>
+            <text class="ax" x="4" y="276">50°S</text>
+            <text class="ax" x="84" y="12">80°E</text>
+            <text class="ax" x="244" y="12">120°E</text>
+            <text class="ax" x="404" y="12">160°E</text>
+
+            <!-- Colombo 6.93N 79.86E → (79.4, 52.3); Hamilton 37.79S 175.28E → (461.1, 231.2) -->
+            <path class="route" d="M79.4 52.3 Q 300 40 461.1 231.2"/>
+            <text class="mid" x="250" y="76" text-anchor="middle">≈ 10,950 km</text>
+
+            <circle class="halo-lk" cx="79.4" cy="52.3" r="12"/>
+            <circle class="dot-lk" cx="79.4" cy="52.3" r="5"/>
+            <text class="lbl" x="94" y="38">Colombo</text>
+            <text class="lbl-s" x="94" y="26">6.93°N 79.86°E</text>
+
+            <circle class="halo-nz" cx="461.1" cy="231.2" r="12"/>
+            <circle class="dot-nz" cx="461.1" cy="231.2" r="5"/>
+            <text class="lbl" x="446" y="259" text-anchor="end">Hamilton</text>
+            <text class="lbl-s" x="446" y="273" text-anchor="end">37.79°S 175.28°E</text>
+          </g>
+        </svg>
+        <figcaption>
+          <span>UTC+5:30 → UTC+13:00</span>
+          <span>7½ hours apart in the NZ summer</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+  </div>
+
+  <section id="uncover">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Personal projects</div>
+        <h2>The Uncover Project</h2>
+        <p>Two independent websites that explain a country to people who are new to it. Each one sticks to evergreen content, history, culture and places, so it stays accurate without constant updates. I plan the content, design the experience and build both sites with Claude.</p>
+      </div>
+
+      <div class="projects">
+        <article class="plate lk">
+          <div class="plate-top">
+            <span>First site · 7.87°N 80.77°E</span>
+            <span class="status">V1 · Live</span>
+          </div>
+          <div class="plate-body">
+            <h3>Uncover <span>Sri Lanka</span></h3>
+            <p>A clean guide to Sri Lankan history and its best-known places, from ancient cities to beaches and hill country. It's my way of giving back to the country I grew up in, and of encouraging people abroad to visit.</p>
+            <dl class="facts">
+              <div><dt>Audience</dt><dd>People outside Sri Lanka who are curious about it or planning a trip</dd></div>
+              <div><dt>My role</dt><dd>Content plan, information architecture, visual design, build</dd></div>
+              <div><dt>Built with</dt><dd>HTML and CSS, published on GitHub Pages, credited Unsplash photography</dd></div>
+            </dl>
+            <ul class="tags"><li>Content strategy</li><li>IA</li><li>Visual design</li><li>Front-end</li></ul>
+            <a class="visit" href="https://shihaaan.github.io/uncoversrilanka/" target="_blank" rel="noopener">Visit Uncover Sri Lanka <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="plate nz">
+          <div class="plate-top">
+            <span>Second site · 40.90°S 174.89°E</span>
+            <span class="status">V1 · Live</span>
+          </div>
+          <div class="plate-body">
+            <h3>Uncover <span>New Zealand</span></h3>
+            <p>A guide that helps newcomers understand Aotearoa New Zealand, not just visit it. Articles answer the questions people actually ask, and a "Start here" path gives first-timers a clear way in. Māori history and culture are handled with care, using correct macrons and Māori-led sources.</p>
+            <dl class="facts">
+              <div><dt>Audience</dt><dd>Immigrants, international students and anyone curious about Aotearoa</dd></div>
+              <div><dt>My role</dt><dd>Content plan, question-led structure, visual design, build</dd></div>
+              <div><dt>Built with</dt><dd>HTML and CSS, built and maintained with Claude Code</dd></div>
+            </dl>
+            <ul class="tags"><li>Question-led content</li><li>Onboarding path</li><li>Cultural care</li><li>AI-assisted build</li></ul>
+            <a class="visit" href="https://shihaaan.github.io/uncovernewzealand/" target="_blank" rel="noopener">Visit Uncover New Zealand <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="approach-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">How I work on these</div>
+        <h2 id="approach-h">Small scope, done properly</h2>
+      </div>
+      <div class="approach">
+        <div>
+          <h3>Plan the content first</h3>
+          <p>Every site starts as a content plan: who it's for, what they need to know, and in what order. The layout follows from that.</p>
+        </div>
+        <div>
+          <h3>Write things that last</h3>
+          <p>History, culture and places don't go out of date, so the sites stay useful without a publishing schedule to keep up.</p>
+        </div>
+        <div>
+          <h3>Credit every source</h3>
+          <p>Facts come from trustworthy sources, and every photo is copyright-free and credited to the person who took it.</p>
+        </div>
+        <div>
+          <h3>Build with Claude</h3>
+          <p>I love building things with Claude. I use it to shape content plans, write code and test ideas quickly, then I review and refine every page myself. Each site ships as a real product with versions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">About</div>
+        <h2>UX background, IT day job</h2>
+      </div>
+      <div class="about">
+        <div class="about-text">
+          <p>I spent three-plus years as a UX designer in Sri Lanka before moving to New Zealand to study. My master's research looked at prompt suggestions in generative AI interfaces like ChatGPT, and how they help people get started.</p>
+          <p>Today I work in IT support, looking after users, devices, applications and infrastructure. I still bring UX into that work, designing internal tools and dashboards for the teams I support.</p>
+          <p>Outside work, I love using Claude to turn ideas into real things. The Uncover Project is where that comes together: my design practice, plus an AI-assisted UX process I'm building and testing end to end.</p>
+        </div>
+        <ol class="timeline" aria-label="Career and study">
+          <li><div class="when">NOW</div><div class="what">IT Support</div><div class="where">Mustard Technology, New Zealand</div></li>
+          <li><div class="when">MASTER'S</div><div class="what">Master of Applied IT</div><div class="where">WINTEC, New Zealand</div></li>
+          <li><div class="when">3+ YEARS</div><div class="what">UX Designer</div><div class="where">Dialog Axiata, Sri Lanka</div></li>
+          <li><div class="when">BACHELOR'S</div><div class="what">Bachelor's degree in IT</div><div class="where">Where it started</div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="eyebrow">Contact</div>
+      <h2>Say kia ora, or āyubōwan.</h2>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/shihansabir/" target="_blank" rel="noopener"><span class="net">LinkedIn</span><span class="handle">in/shihansabir</span></a>
+        <a href="https://www.instagram.com/shihan.co.nz/" target="_blank" rel="noopener"><span class="net">Instagram</span><span class="handle">@shihan.co.nz</span></a>
+        <a href="https://www.facebook.com/shihan.co.nz" target="_blank" rel="noopener"><span class="net">Facebook</span><span class="handle">shihan.co.nz</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Shihan Sabir</span>
+    <span>Designed and built in Aotearoa</span>
+  </div>
+</footer>
+
+</body>
+</html>
