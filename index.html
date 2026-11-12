@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: one narrow reading column; a wide coordinate "chart" hero linking Colombo and Auckland; two project plates side by side. */
+/* Layout: one narrow reading column; a wide coordinate "chart" hero linking Panadura and Hamilton; two project plates side by side. */
 /* Palette "Refreshing Summer Fun": sky #8ECAE6 · lagoon #219EBC · deep sea #023047 · sun #FFB703 · tangerine #FB8500.
    Raw swatches are used for fills; darker text-safe shades of the same hues are used for small text on light backgrounds. */
 :root {
@@ -149,19 +149,13 @@ h2 { font-family: var(--f-display); font-weight: 800; font-size: var(--step-2); 
 }
 .status { display: inline-flex; align-items: center; gap: 7px; color: var(--c); font-weight: 500; }
 .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--cf); }
-.plate-body { padding: 24px 22px 26px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
-.plate h3 { font-family: var(--f-display); font-weight: 800; font-size: 1.6rem; letter-spacing: -0.02em; line-height: 1.1; margin: 0; }
+.plate-body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.plate h3 { font-family: var(--f-display); font-weight: 800; font-size: 1.45rem; letter-spacing: -0.02em; line-height: 1.1; margin: 0; }
 .plate h3 span { color: var(--c); }
 .plate p { margin: 0; color: var(--muted); max-width: 60ch; }
-dl.facts { margin: 0; display: grid; gap: 10px; font-size: 0.9375rem; }
-dl.facts div { display: grid; grid-template-columns: 7.5rem 1fr; gap: 12px; }
-dl.facts dt { font-family: var(--f-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); padding-top: 3px; }
-dl.facts dd { margin: 0; min-width: 0; }
-@media (max-width: 420px) { dl.facts div { grid-template-columns: 1fr; gap: 2px; } }
-.tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0; }
-.tags li { font-size: 12px; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.plate .meta { font-family: var(--f-mono); font-size: 11px; color: var(--muted); letter-spacing: 0.03em; }
 .visit {
-  margin-top: auto; align-self: flex-start;
+  margin-top: auto; align-self: flex-start; transform: translateY(8px);
   display: inline-flex; align-items: center; gap: 8px;
   font-weight: 600; font-size: 0.9375rem; text-decoration: none;
   color: var(--c); border-bottom: 2px solid var(--cf); padding-bottom: 2px;
@@ -225,12 +219,12 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
       <div>
         <div class="eyebrow">UX designer · IT support · Aotearoa New Zealand</div>
         <h1>I design clear, useful things for <em>two islands</em> I call home.</h1>
-        <p class="lede">I grew up in <strong>Sri Lanka</strong> and now live in <strong>New Zealand</strong>. The Uncover Project is how I help people understand both.</p>
+        <p class="lede">I'm from <strong>Panadura, Sri Lanka</strong> and now live in <strong>New Zealand</strong>. The Uncover Project is how I help people understand both.</p>
       </div>
 
-      <figure class="chart" aria-label="Map grid showing the route between Colombo, Sri Lanka and Hamilton, New Zealand">
+      <figure class="chart" aria-label="Map grid showing the route between Panadura, Sri Lanka and Hamilton, New Zealand">
         <svg viewBox="0 0 540 300" role="img">
-          <title>Colombo to Hamilton, about 10,950 km</title>
+          <title>Panadura to Hamilton, about 10,940 km</title>
           <!-- Equirectangular window: 60°E–190°E, 20°N–50°S. x=(lon-60)*4, y=(20-lat)*4 -->
           <g transform="translate(10,10)">
             <path class="g" d="M0 0V280M80 0V280M160 0V280M240 0V280M320 0V280M400 0V280M480 0V280M520 0V280"/>
@@ -244,14 +238,14 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
             <text class="ax" x="244" y="12">120°E</text>
             <text class="ax" x="404" y="12">160°E</text>
 
-            <!-- Colombo 6.93N 79.86E → (79.4, 52.3); Hamilton 37.79S 175.28E → (461.1, 231.2) -->
-            <path class="route" d="M79.4 52.3 Q 300 40 461.1 231.2"/>
-            <text class="mid" x="250" y="76" text-anchor="middle">≈ 10,950 km</text>
+            <!-- Panadura 6.71N 79.90E → (79.6, 53.2); Hamilton 37.79S 175.28E → (461.1, 231.2) -->
+            <path class="route" d="M79.6 53.2 Q 300 40 461.1 231.2"/>
+            <text class="mid" x="250" y="76" text-anchor="middle">≈ 10,940 km</text>
 
-            <circle class="halo-lk" cx="79.4" cy="52.3" r="12"/>
-            <circle class="dot-lk" cx="79.4" cy="52.3" r="5"/>
-            <text class="lbl" x="94" y="38">Colombo</text>
-            <text class="lbl-s" x="94" y="26">6.93°N 79.86°E</text>
+            <circle class="halo-lk" cx="79.6" cy="53.2" r="12"/>
+            <circle class="dot-lk" cx="79.6" cy="53.2" r="5"/>
+            <text class="lbl" x="94" y="38">Panadura</text>
+            <text class="lbl-s" x="94" y="26">6.71°N 79.90°E</text>
 
             <circle class="halo-nz" cx="461.1" cy="231.2" r="12"/>
             <circle class="dot-nz" cx="461.1" cy="231.2" r="5"/>
@@ -273,7 +267,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
       <div class="sec-head">
         <div class="eyebrow">Personal projects</div>
         <h2>The Uncover Project</h2>
-        <p>Two independent websites that explain a country to people who are new to it. Each one sticks to evergreen content, history, culture and places, so it stays accurate without constant updates. I plan the content, design the experience and build both sites with Claude.</p>
+        <p>Two websites that explain a country to people new to it, through history, culture and places. I design and build both with Claude Code.</p>
       </div>
 
       <div class="projects">
@@ -284,13 +278,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
           </div>
           <div class="plate-body">
             <h3>Uncover <span>Sri Lanka</span></h3>
-            <p>A clean guide to Sri Lankan history and its best-known places, from ancient cities to beaches and hill country. It's my way of giving back to the country I grew up in, and of encouraging people abroad to visit.</p>
-            <dl class="facts">
-              <div><dt>Audience</dt><dd>People outside Sri Lanka who are curious about it or planning a trip</dd></div>
-              <div><dt>My role</dt><dd>Content plan, information architecture, visual design, build</dd></div>
-              <div><dt>Built with</dt><dd>HTML and CSS, published on GitHub Pages, credited Unsplash photography</dd></div>
-            </dl>
-            <ul class="tags"><li>Content strategy</li><li>IA</li><li>Visual design</li><li>Front-end</li></ul>
+            <p>Sri Lankan history and its best-known places, from ancient cities to beaches, for people thinking of visiting.</p>
+            <p class="meta">Built with Claude Code</p>
             <a class="visit" href="https://shihaaan.github.io/uncoversrilanka/" target="_blank" rel="noopener">Visit Uncover Sri Lanka <span aria-hidden="true">→</span></a>
           </div>
         </article>
@@ -302,13 +291,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
           </div>
           <div class="plate-body">
             <h3>Uncover <span>New Zealand</span></h3>
-            <p>A guide that helps newcomers understand Aotearoa New Zealand, not just visit it. Articles answer the questions people actually ask, and a "Start here" path gives first-timers a clear way in. Māori history and culture are handled with care, using correct macrons and Māori-led sources.</p>
-            <dl class="facts">
-              <div><dt>Audience</dt><dd>Immigrants, international students and anyone curious about Aotearoa</dd></div>
-              <div><dt>My role</dt><dd>Content plan, question-led structure, visual design, build</dd></div>
-              <div><dt>Built with</dt><dd>HTML and CSS, built and maintained with Claude Code</dd></div>
-            </dl>
-            <ul class="tags"><li>Question-led content</li><li>Onboarding path</li><li>Cultural care</li><li>AI-assisted build</li></ul>
+            <p>A newcomer's guide to Aotearoa: its history, culture and places, with a simple "Start here" path.</p>
+            <p class="meta">Built with Claude Code</p>
             <a class="visit" href="https://shihaaan.github.io/uncovernewzealand/" target="_blank" rel="noopener">Visit Uncover New Zealand <span aria-hidden="true">→</span></a>
           </div>
         </article>
@@ -359,7 +343,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
           <li><div class="when">NOW</div><div class="what">IT Support</div><div class="where">Mustard Technology, New Zealand</div></li>
           <li><div class="when">MASTER'S</div><div class="what">Master of Applied IT</div><div class="where">WINTEC, New Zealand</div></li>
           <li><div class="when">3+ YEARS</div><div class="what">UX Designer</div><div class="where">Dialog Axiata, Sri Lanka</div></li>
-          <li><div class="when">BACHELOR'S</div><div class="what">Bachelor's degree in IT</div><div class="where">Where it started</div></li>
+          <li><div class="when">BACHELOR'S</div><div class="what">Bachelor's degree in IT</div><div class="where">SLIIT, Sri Lanka</div></li>
         </ol>
       </div>
     </div>
