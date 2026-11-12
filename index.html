@@ -101,7 +101,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ocean); outline
 .eyebrow { font-family: var(--f-mono); font-size: var(--step--1); color: var(--muted); letter-spacing: 0.04em; }
 h1 {
   font-family: var(--f-display); font-weight: 800; font-size: var(--step-3);
-  line-height: 0.98; letter-spacing: -0.035em; margin: 14px 0 22px; text-wrap: balance;
+  line-height: 0.98; letter-spacing: -0.035em; margin: 0 0 22px; text-wrap: balance;
 }
 h1 em { font-style: normal; color: var(--ocean); }
 .lede { font-size: var(--step-1); line-height: 1.5; color: var(--muted); max-width: 34ch; margin: 0; text-wrap: pretty; }
@@ -163,12 +163,6 @@ h2 { font-family: var(--f-display); font-weight: 800; font-size: var(--step-2); 
 .visit:hover { gap: 12px; }
 .visit[aria-disabled="true"] { color: var(--muted); border-color: var(--line); cursor: default; }
 
-/* Approach */
-.approach { display: grid; gap: 28px 40px; }
-@media (min-width: 720px) { .approach { grid-template-columns: repeat(2, 1fr); } }
-.approach h3 { font-family: var(--f-display); font-weight: 600; font-size: var(--step-1); margin: 0 0 6px; letter-spacing: -0.01em; }
-.approach p { margin: 0; color: var(--muted); max-width: 52ch; }
-
 /* About */
 .about { display: grid; gap: 40px; }
 @media (min-width: 860px) { .about { grid-template-columns: 1.2fr 1fr; } }
@@ -217,7 +211,6 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
   <div class="wrap hero">
     <div class="hero-grid">
       <div>
-        <div class="eyebrow">UX designer · IT support · Aotearoa New Zealand</div>
         <h1>I design clear, useful things for <em>two islands</em> I call home.</h1>
         <p class="lede">I grew up in <strong>Sri Lanka</strong> and now live in <strong>New Zealand</strong>. The Uncover Project is how I help people understand both.</p>
       </div>
@@ -296,33 +289,6 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
             <a class="visit" href="https://shihaaan.github.io/uncovernewzealand/" target="_blank" rel="noopener">Visit Uncover New Zealand <span aria-hidden="true">→</span></a>
           </div>
         </article>
-      </div>
-    </div>
-  </section>
-
-  <section aria-labelledby="approach-h">
-    <div class="wrap">
-      <div class="sec-head">
-        <div class="eyebrow">How I work on these</div>
-        <h2 id="approach-h">Small scope, done properly</h2>
-      </div>
-      <div class="approach">
-        <div>
-          <h3>Plan the content first</h3>
-          <p>Every site starts as a content plan: who it's for, what they need to know, and in what order. The layout follows from that.</p>
-        </div>
-        <div>
-          <h3>Write things that last</h3>
-          <p>History, culture and places don't go out of date, so the sites stay useful without a publishing schedule to keep up.</p>
-        </div>
-        <div>
-          <h3>Credit every source</h3>
-          <p>Facts come from trustworthy sources, and every photo is copyright-free and credited to the person who took it.</p>
-        </div>
-        <div>
-          <h3>Build with Claude</h3>
-          <p>I love building things with Claude. I use it to shape content plans, write code and test ideas quickly, then I review and refine every page myself. Each site ships as a real product with versions.</p>
-        </div>
       </div>
     </div>
   </section>
