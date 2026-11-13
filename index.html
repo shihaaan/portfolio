@@ -235,6 +235,9 @@ section.compact { padding-block: clamp(32px, 5vw, 48px); }
 .timeline li:last-child::after { display: none; }
 .timeline li:first-child::before { background: var(--yellow); }
 .timeline .when { font-family: var(--f-mono); font-size: 11px; line-height: 18px; color: var(--muted); letter-spacing: 0.04em; }
+/* Arrow from employer to client, same symbol as the map caption and Visit links. */
+.timeline .arrow { color: var(--ink); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .timeline .what { font-weight: 600; }
 .timeline .where { color: var(--muted); font-size: 0.9375rem; }
 
@@ -373,7 +376,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
       <div class="about">
         <div class="about-text">
           <p>I spent three-plus years as a UX designer in Sri Lanka before moving to New Zealand to study. My master's research looked at prompt suggestions in generative AI interfaces like ChatGPT, and how they help people get started.</p>
-          <p>Today I work in IT support, looking after users, devices, applications and infrastructure. I still bring UX into that work, designing internal tools and dashboards for the teams I support.</p>
+          <p>Today I work in IT support for Ebbett, looking after users, devices and systems. It brings together IT, UX and cars, the three things I love most, and I design internal tools and dashboards along the way.</p>
           <p>Outside work, I love using Claude to turn ideas into real things. The Uncover Project is my passion project, two websites about the places I call home, made simply because I wanted them to exist.</p>
           <div class="passion">
             <p class="passion-lead">Cars are my biggest passion.</p>
@@ -382,7 +385,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
           <p><a class="text-link" href="https://www.instagram.com/ss96media/" target="_blank" rel="noopener"><span class="ico"><i class="fa-brands fa-instagram" aria-hidden="true"></i></span>See SS96 MEDIA on Instagram <span aria-hidden="true">→</span></a></p>
         </div>
         <ol class="timeline" aria-label="Career and study">
-          <li><div class="when">NOW</div><div class="what">IT Support</div><div class="where">Mustard Technology, New Zealand</div></li>
+          <li><div class="when">NOW · AUTOMOTIVE</div><div class="what">IT Support</div><div class="where">Mustard Technology <span class="arrow" aria-hidden="true">→</span><span class="sr-only">, working for</span> Ebbett</div></li>
           <li><div class="when">AUTOMOTIVE</div><div class="what">Service Advisor</div><div class="where">Ebbett Audi &amp; CUPRA</div></li>
           <li><div class="when">MASTER'S</div><div class="what">Master of Applied IT</div><div class="where">WINTEC, New Zealand</div></li>
           <li><div class="when">3+ YEARS</div><div class="what">UX Designer</div><div class="where">Dialog Axiata PLC, Sri Lanka</div></li>
